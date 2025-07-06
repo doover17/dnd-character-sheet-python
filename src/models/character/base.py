@@ -43,10 +43,17 @@ class CharacterVitals:
     temporary_hit_points: int = 0
     armor_class: int = 10
     speed: int = 30
-    
+    initiative_modifier: int = 0
+    death_saves_successes: int = 0
+    death_saves_failures: int = 0
+    conditions: List[str] = field(default_factory=list)
+
     @property
     def current_hit_points(self) -> int:
         return self.hit_points + self.temporary_hit_points
+
+    def calculate_initiative(self, dex_modifier: int) -> int:
+        return dex_modifier + self.initiative_modifier
 
 @dataclass
 class CharacterProgression:

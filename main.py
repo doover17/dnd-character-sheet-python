@@ -110,7 +110,7 @@ class DnDCharacterSheetApp:
 
         self.combat_stats_widget = CombatStatsWidget(
             combat_stats_frame,
-            self.character.vitals
+            self.character
         )
         self.combat_stats_widget.pack(fill=tk.X)
 
