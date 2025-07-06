@@ -1,5 +1,5 @@
 # Core dependencies
-tkinter  # Built-in with Python
+
 
 # Development dependencies
 pytest>=7.0.0

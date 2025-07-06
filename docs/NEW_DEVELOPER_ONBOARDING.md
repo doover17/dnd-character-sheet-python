@@ -1,6 +1,6 @@
 # New Developer Onboarding Guide
 
-## 👋 Welcome to the D&D Character Sheet Project!
+## 👋 Welcome to the D&D Character Sheet Project
 
 This guide will get you up and running with our Python-based D&D Beyond clone. You'll be working in the shared project directory, so follow these steps to get started.
 
@@ -9,11 +9,13 @@ This guide will get you up and running with our Python-based D&D Beyond clone. Y
 ## 🚀 Quick Start (2 minutes)
 
 ### 1. Navigate to Project Directory
+
 ```bash
 cd /Users/davidhoover/Desktop/nova_dnd_dashboard/dnd_char_app
 ```
 
 ### 2. Activate Development Environment
+
 ```bash
 # Activate the existing virtual environment
 source venv/bin/activate
@@ -23,6 +25,7 @@ pip list | grep pytest
 ```
 
 ### 3. Test the Application
+
 ```bash
 # Run the working application
 python main.py
@@ -38,9 +41,11 @@ pytest
 ## 📋 Project Overview
 
 ### What We're Building
+
 A Python desktop application that replicates D&D Beyond's character sheet functionality using tkinter for the UI.
 
 ### Current Status
+
 - ✅ Basic character information and ability scores working
 - ✅ Modular architecture with clean separation of concerns
 - ✅ Professional development workflow established
@@ -48,6 +53,7 @@ A Python desktop application that replicates D&D Beyond's character sheet functi
 - 🔴 Core D&D features (combat stats, skills, spells) need implementation
 
 ### Tech Stack
+
 - **Language**: Python 3.8+
 - **UI**: tkinter (built-in)
 - **Testing**: pytest
@@ -58,7 +64,8 @@ A Python desktop application that replicates D&D Beyond's character sheet functi
 
 ## 📁 Project Structure
 
-```
+```markdown
+
 dnd-character-sheet-python/
 ├── src/
 │   ├── models/          # Data models (Character, Spells, Equipment)
@@ -77,17 +84,19 @@ dnd-character-sheet-python/
 
 ## 🎯 Your First Task: TASK-UI-003
 
-**Your initial assignment is TASK-UI-003: Saving Throws Widget**
+### Your initial assignment is TASK-UI-003: Saving Throws Widget
 
 This is a beginner-friendly task that will get you familiar with the codebase:
 
 ### Task Details
+
 - **Estimated Time**: 1-2 days
 - **Difficulty**: Beginner-friendly
 - **What You'll Build**: A UI widget displaying saving throws with proficiency tracking
 - **Skills Learned**: tkinter widgets, following UI patterns, D&D mechanics
 
 ### Task Requirements
+
 1. **Follow existing UI patterns** from `src/ui/components/ability_scores.py`
 2. **Create saving throws widget** with all 6 ability-based saves
 3. **Add proficiency checkboxes** for each saving throw
@@ -95,6 +104,7 @@ This is a beginner-friendly task that will get you familiar with the codebase:
 5. **Integrate with character model** to show real data
 
 ### Success Criteria
+
 - [ ] Widget displays all 6 saving throws (STR, DEX, CON, INT, WIS, CHA)
 - [ ] Proficiency checkboxes are functional
 - [ ] Modifiers calculate correctly
@@ -102,6 +112,7 @@ This is a beginner-friendly task that will get you familiar with the codebase:
 - [ ] Code follows project style guidelines
 
 ### Check-in Point
+
 **Complete TASK-UI-003 and check in with the team lead before moving to additional tasks.**
 
 ---
@@ -115,6 +126,7 @@ This is a beginner-friendly task that will get you familiar with the codebase:
 3. **Existing code pattern**: Study `src/ui/components/ability_scores.py` to understand the widget pattern
 
 **Optional reading** (for broader context):
+
 - `DEVELOPMENT_PLAN.md` - Project overview
 - `TASK_ASSIGNMENT_MATRIX.md` - How your task fits into the bigger picture
 
@@ -123,6 +135,7 @@ This is a beginner-friendly task that will get you familiar with the codebase:
 ## 🛠 Development Workflow
 
 ### Branch Naming Convention
+
 ```bash
 # For your task (TASK-UI-003)
 git checkout -b feature/TASK-UI-003-saving-throws-widget
@@ -132,6 +145,7 @@ git checkout -b feature/TASK-XX-short-description
 ```
 
 ### Making Changes
+
 1. **Create feature branch** from main
 2. **Make small, focused commits** with clear messages
 3. **Follow code style guidelines** (Black formatting, type hints)
@@ -140,6 +154,7 @@ git checkout -b feature/TASK-XX-short-description
 6. **Create pull request** when ready
 
 ### Code Quality Standards
+
 ```bash
 # Format code
 black src/
@@ -155,6 +170,7 @@ pytest --cov=src --cov-report=term-missing
 ```
 
 ### Example Development Session for TASK-UI-003
+
 ```bash
 # 1. Start new feature
 git checkout -b feature/TASK-UI-003-saving-throws-widget
@@ -189,6 +205,7 @@ git push origin feature/TASK-UI-003-saving-throws-widget
 ## 🧪 Testing Guidelines
 
 ### Running Tests
+
 ```bash
 # Run all tests
 pytest
@@ -204,12 +221,15 @@ pytest -m "not slow"  # Skip slow integration tests
 ```
 
 ### Testing for TASK-UI-003
+
 For your saving throws widget, focus on testing that:
+
 1. **The widget displays correctly** (all 6 saves shown)
 2. **Checkboxes work** (can be checked/unchecked)
 3. **Modifiers calculate correctly** (ability modifier + proficiency if checked)
 
 **Note**: UI testing can be tricky with tkinter. For now, focus on manual testing:
+
 ```bash
 # Run the app and verify:
 python main.py
@@ -230,10 +250,12 @@ python main.py
 ### Key D&D 5e Concepts You'll Need
 
 **Ability Scores**: 6 core stats (STR, DEX, CON, INT, WIS, CHA)
+
 - Range: 1-30 (typically 8-18 for players)
 - Modifier: `(score - 10) // 2`
 
 **Proficiency Bonus**: Based on character level
+
 - Level 1-4: +2
 - Level 5-8: +3
 - Level 9-12: +4
@@ -241,15 +263,18 @@ python main.py
 - Level 17-20: +6
 
 **Skills**: 18 skills, each tied to an ability score
+
 - Examples: Athletics (STR), Stealth (DEX), Perception (WIS)
 - Modifier: ability modifier + (proficiency bonus if proficient)
 
 **Saving Throws**: One for each ability score (STR, DEX, CON, INT, WIS, CHA)
+
 - Calculation: ability modifier + (proficiency bonus if proficient)
 - Most classes get proficiency in 2 saving throws
 - Examples: Fighters get STR and CON, Wizards get INT and WIS
 
 ### Reference Materials
+
 - **Official**: D&D 5e Player's Handbook
 - **Online**: D&D Beyond rules reference
 - **SRD**: [System Reference Document](https://dnd.wizards.com/resources/systems-reference-document) (free)
@@ -259,6 +284,7 @@ python main.py
 ## 💬 Communication
 
 ### Getting Help
+
 1. **Check existing documentation** first
 2. **Search GitHub issues** for similar problems
 3. **Ask questions** in project discussions
@@ -269,6 +295,7 @@ python main.py
    - Testing: @qa-lead
 
 ### Daily Workflow
+
 - **Morning**: Check GitHub notifications, review any new PRs
 - **During development**: Commit frequently with clear messages
 - **Before pushing**: Run tests and code quality checks
@@ -279,6 +306,7 @@ python main.py
 ## 🚨 Common Issues & Solutions
 
 ### Environment Issues
+
 ```bash
 # If virtual environment issues
 python -m venv --clear venv
@@ -290,6 +318,7 @@ export PYTHONPATH="${PYTHONPATH}:$(pwd)/src"
 ```
 
 ### Git Issues
+
 ```bash
 # If you need to sync with main
 git checkout main
@@ -303,6 +332,7 @@ pytest  # Run tests to see what's broken
 ```
 
 ### UI Issues
+
 ```bash
 # If tkinter crashes or doesn't display
 # On macOS, you might need:
@@ -317,6 +347,7 @@ python -c "import tkinter; tkinter.Tk().mainloop()"
 ## 🎯 Your Next Steps
 
 ### Today (Setup & Research)
+
 1. ✅ Complete environment setup and test the app
 2. ✅ Read this onboarding guide  
 3. 📋 Read TASK-UI-003 details in `FRONTEND_TASKS.md`
@@ -324,12 +355,14 @@ python -c "import tkinter; tkinter.Tk().mainloop()"
 5. 🌿 Create your feature branch: `feature/TASK-UI-003-saving-throws-widget`
 
 ### Day 1-2 (Implementation)
+
 1. 🧑‍💻 Implement the saving throws widget following the existing pattern
 2. 🧪 Test frequently by running `python main.py`
 3. 💬 Ask questions if you get stuck
 4. ✅ Verify all success criteria are met
 
-### Check-in Point
+### Check-in Point 2
+
 1. 🔄 Complete TASK-UI-003 implementation
 2. 🚀 Push your feature branch
 3. 👥 **Check in with team lead for review**
@@ -340,23 +373,26 @@ python -c "import tkinter; tkinter.Tk().mainloop()"
 ## 📞 Emergency Contacts
 
 **If you're completely stuck:**
+
 - **Project Lead**: [Contact info TBD]
 - **Senior Developer**: Check GitHub for most active contributors
 - **GitHub Issues**: Create an issue with `question` label
 
 **For urgent issues:**
+
 - Create GitHub issue with `urgent` label
 - Tag `@doover17` (project owner)
 
 ---
 
-## 🎉 Welcome to the Team!
+## 🎉 Welcome to the Team
 
 You're joining a well-organized project with clear documentation and professional standards. Take your time to understand the architecture, ask questions, and remember that everyone is here to help you succeed.
 
 **The goal**: Build an amazing D&D character sheet that players will love to use!
 
-**Remember**: 
+**Remember**:
+
 - Quality over speed
 - Ask questions early
 - Test your code
@@ -375,6 +411,7 @@ You're joining a well-organized project with clear documentation and professiona
 **Branch name**: `feature/TASK-UI-003-saving-throws-widget`
 
 **Key requirements**:
+
 - Display all 6 saving throws (STR, DEX, CON, INT, WIS, CHA)
 - Add checkboxes for proficiency selection
 - Calculate modifiers: ability modifier + (proficiency bonus if checked)

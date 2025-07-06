@@ -20,6 +20,9 @@ from src.config.settings import (
 from src.models.character.base import Character, AbilityScores
 from src.ui.components.character_header import CharacterHeaderWidget
 from src.ui.components.ability_scores import AbilityScoresWidget
+from src.ui.components.combat_stats import CombatStatsWidget
+from src.ui.components.skills import SkillsWidget
+from src.ui.components.saving_throws import SavingThrowsWidget
 
 class DnDCharacterSheetApp:
     """Main application class"""
@@ -99,21 +102,39 @@ class DnDCharacterSheetApp:
             self.character.ability_scores,
             self.on_ability_score_change
         )
-        self.ability_scores_widget.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
+        self.ability_scores_widget.pack(fill=tk.X, padx=15, pady=15)
+
+        # Combat Stats
+        combat_stats_frame = tk.Frame(left_frame, bg="white")
+        combat_stats_frame.pack(fill=tk.X, padx=15, pady=15)
+
+        self.combat_stats_widget = CombatStatsWidget(
+            combat_stats_frame,
+            self.character.vitals
+        )
+        self.combat_stats_widget.pack(fill=tk.X)
+
+        # Saving Throws
+        saving_throws_frame = tk.Frame(left_frame, bg="white")
+        saving_throws_frame.pack(fill=tk.X, padx=15, pady=15)
+
+        self.saving_throws_widget = SavingThrowsWidget(
+            saving_throws_frame,
+            self.character,
+            self.on_character_change
+        )
+        self.saving_throws_widget.pack(fill=tk.X)
         
-        # Right area - Character details (placeholder)
+        # Right area - Character details
         right_frame = tk.Frame(content_frame, bg="white", relief=tk.RAISED, bd=1)
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
-        
-        # Placeholder content
-        placeholder_label = tk.Label(
+
+        self.skills_widget = SkillsWidget(
             right_frame,
-            text="Character Details\\n(Skills, Equipment, Spells, etc.)\\n\\nComing Soon...",
-            bg="white",
-            font=("Arial", 14),
-            justify=tk.CENTER
+            self.character,
+            self.on_character_change
         )
-        placeholder_label.pack(expand=True)
+        self.skills_widget.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
     
     def on_character_change(self, field: str, value):
         """Handle character field changes"""
