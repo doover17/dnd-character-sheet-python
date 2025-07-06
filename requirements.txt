@@ -1,0 +1,13 @@
+# Core dependencies
+tkinter  # Built-in with Python
+
+# Development dependencies
+pytest>=7.0.0
+pytest-cov>=4.0.0
+black>=22.0.0
+flake8>=5.0.0
+mypy>=1.0.0
+
+# Optional dependencies
+pillow>=9.0.0  # For image handling
+requests>=2.28.0  # For API calls (if needed)

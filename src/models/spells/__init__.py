@@ -1,0 +1,1 @@
+# Spells models package
