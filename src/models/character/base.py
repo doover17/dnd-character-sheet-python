@@ -90,7 +90,7 @@ class Character:
     saving_throw_proficiencies: List[str] = field(default_factory=list)
     
     # Equipment
-    equipment: List[str] = field(default_factory=list)
+    equipment: List[str] = field(default_factory=list)  # Legacy - keep for compatibility
     
     # Spells
     spell_slots: Dict[int, int] = field(default_factory=dict)
@@ -110,3 +110,8 @@ class Character:
         
         # Update proficiency bonus based on level
         self.progression.proficiency_bonus = self.progression.calculate_proficiency_bonus()
+        
+        # Initialize inventory if not present (for equipment system)
+        if not hasattr(self, 'inventory'):
+            from ..equipment.inventory import Inventory
+            self.inventory = Inventory()

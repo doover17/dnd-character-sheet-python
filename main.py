@@ -23,6 +23,7 @@ from src.ui.components.ability_scores import AbilityScoresWidget
 from src.ui.components.combat_stats import CombatStatsWidget
 from src.ui.components.skills import SkillsWidget
 from src.ui.components.saving_throws import SavingThrowsWidget
+from src.ui.components.equipment import EquipmentWidget
 
 class DnDCharacterSheetApp:
     """Main application class"""
@@ -129,12 +130,12 @@ class DnDCharacterSheetApp:
         right_frame = tk.Frame(content_frame, bg="white", relief=tk.RAISED, bd=1)
         right_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
-        self.skills_widget = SkillsWidget(
+        self.equipment_widget = EquipmentWidget(
             right_frame,
             self.character,
             self.on_character_change
         )
-        self.skills_widget.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
+        self.equipment_widget.pack(fill=tk.BOTH, expand=True, padx=15, pady=15)
     
     def on_character_change(self, field: str, value):
         """Handle character field changes"""
