@@ -2,31 +2,24 @@
 
 ## 👋 Welcome to the D&D Character Sheet Project!
 
-This guide will get you up and running with our Python-based D&D Beyond clone. Follow these steps in order for a smooth onboarding experience.
+This guide will get you up and running with our Python-based D&D Beyond clone. You'll be working in the shared project directory, so follow these steps to get started.
 
 ---
 
-## 🚀 Quick Start (5 minutes)
+## 🚀 Quick Start (2 minutes)
 
-### 1. Clone the Repository
+### 1. Navigate to Project Directory
 ```bash
-git clone https://github.com/doover17/dnd-character-sheet-python.git
-cd dnd-character-sheet-python
+cd /Users/davidhoover/Desktop/nova_dnd_dashboard/dnd_char_app
 ```
 
-### 2. Set Up Development Environment
+### 2. Activate Development Environment
 ```bash
-# Create virtual environment
-python -m venv venv
-
-# Activate virtual environment
-# On macOS/Linux:
+# Activate the existing virtual environment
 source venv/bin/activate
-# On Windows:
-venv\Scripts\activate
 
-# Install dependencies
-pip install -r requirements.txt
+# Verify dependencies are installed
+pip list | grep pytest
 ```
 
 ### 3. Test the Application
@@ -82,57 +75,48 @@ dnd-character-sheet-python/
 
 ---
 
-## 🎯 Your First Task Options
+## 🎯 Your First Task: TASK-UI-003
 
-Based on your experience level, choose your first task:
+**Your initial assignment is TASK-UI-003: Saving Throws Widget**
 
-### 🟢 Beginner-Friendly Tasks
-1. **TASK-BE-003**: Saving Throws Model (1-2 days)
-   - Simple dataclass implementation
-   - Basic D&D calculations
-   - Good intro to the codebase
+This is a beginner-friendly task that will get you familiar with the codebase:
 
-2. **TASK-UI-003**: Saving Throws Widget (1-2 days)
-   - Follow existing UI patterns
-   - Simple tkinter components
-   - Visual display of saving throws
+### Task Details
+- **Estimated Time**: 1-2 days
+- **Difficulty**: Beginner-friendly
+- **What You'll Build**: A UI widget displaying saving throws with proficiency tracking
+- **Skills Learned**: tkinter widgets, following UI patterns, D&D mechanics
 
-### 🟡 Intermediate Tasks
-1. **TASK-BE-002**: Skills System Implementation (2-3 days)
-   - All 18 D&D skills with calculations
-   - Proficiency and expertise tracking
-   - Integration with ability scores
+### Task Requirements
+1. **Follow existing UI patterns** from `src/ui/components/ability_scores.py`
+2. **Create saving throws widget** with all 6 ability-based saves
+3. **Add proficiency checkboxes** for each saving throw
+4. **Calculate and display modifiers** (ability modifier + proficiency bonus if applicable)
+5. **Integrate with character model** to show real data
 
-2. **TASK-UI-002**: Skills System Interface (3-4 days)
-   - Complete skills UI with checkboxes
-   - Search/filter functionality
-   - Clean, scrollable interface
+### Success Criteria
+- [ ] Widget displays all 6 saving throws (STR, DEX, CON, INT, WIS, CHA)
+- [ ] Proficiency checkboxes are functional
+- [ ] Modifiers calculate correctly
+- [ ] Widget integrates into main application
+- [ ] Code follows project style guidelines
 
-### 🔴 Advanced Tasks
-1. **TASK-BE-001**: Combat Stats Model Enhancement (2-3 days)
-   - Complex combat calculations
-   - HP management, AC calculation
-   - Integration with equipment system
-
-2. **TASK-SYS-001**: Data Persistence System (3-4 days)
-   - SQLite database design
-   - Character save/load functionality
-   - Data migration system
+### Check-in Point
+**Complete TASK-UI-003 and check in with the team lead before moving to additional tasks.**
 
 ---
 
-## 📖 Essential Reading
+## 📖 Essential Reading for TASK-UI-003
 
-**Before coding, please read these docs (in order):**
+**Before starting your task, read these specific sections:**
 
-1. **`DEVELOPMENT_PLAN.md`** - Project overview and team structure
-2. **`WORKFLOW_AND_SETUP.md`** - Development workflow and Git standards
-3. **Your team's task file**:
-   - Frontend: `FRONTEND_TASKS.md`
-   - Backend: `BACKEND_TASKS.md`
-   - Systems: `SYSTEMS_TASKS.md`
-   - QA: `QA_TESTING_TASKS.md`
-4. **`TASK_ASSIGNMENT_MATRIX.md`** - All tasks with dependencies
+1. **`FRONTEND_TASKS.md`** - Find TASK-UI-003 for detailed requirements
+2. **`WORKFLOW_AND_SETUP.md`** - Git workflow and coding standards (sections on branch naming and code quality)
+3. **Existing code pattern**: Study `src/ui/components/ability_scores.py` to understand the widget pattern
+
+**Optional reading** (for broader context):
+- `DEVELOPMENT_PLAN.md` - Project overview
+- `TASK_ASSIGNMENT_MATRIX.md` - How your task fits into the bigger picture
 
 ---
 
@@ -140,14 +124,11 @@ Based on your experience level, choose your first task:
 
 ### Branch Naming Convention
 ```bash
-# Feature branches
-git checkout -b feature/TASK-BE-003-saving-throws-model
+# For your task (TASK-UI-003)
+git checkout -b feature/TASK-UI-003-saving-throws-widget
 
-# Bug fixes
-git checkout -b bugfix/ability-modifier-calculation
-
-# Documentation
-git checkout -b docs/update-api-documentation
+# General pattern for future tasks
+git checkout -b feature/TASK-XX-short-description
 ```
 
 ### Making Changes
@@ -173,32 +154,34 @@ pytest
 pytest --cov=src --cov-report=term-missing
 ```
 
-### Example Development Session
+### Example Development Session for TASK-UI-003
 ```bash
 # 1. Start new feature
-git checkout -b feature/TASK-BE-003-saving-throws-model
+git checkout -b feature/TASK-UI-003-saving-throws-widget
 
-# 2. Make changes
-# ... edit files ...
+# 2. Create the widget file
+# Create src/ui/components/saving_throws.py
+# Follow the pattern from ability_scores.py
 
-# 3. Test your changes
-python main.py  # Test in GUI
-pytest tests/models/test_saving_throws.py  # Run specific tests
+# 3. Test your changes frequently
+python main.py  # Test in GUI - see your widget appear
+pytest  # Run tests to make sure nothing broke
 
-# 4. Commit with clear message
+# 4. Commit when widget is working
 git add -A
-git commit -m "feat: implement saving throws model with proficiency tracking
+git commit -m "feat: implement saving throws widget with proficiency checkboxes
 
-- Add SavingThrows dataclass in src/models/character/saving_throws.py
-- Implement modifier calculations for all 6 ability saves
-- Add proficiency bonus integration
-- Include unit tests with 90% coverage
+- Add SavingThrowsWidget in src/ui/components/saving_throws.py
+- Display all 6 saving throws with ability-based modifiers
+- Include proficiency checkboxes for each save
+- Calculate modifiers correctly (ability + proficiency if applicable)
+- Integrate widget into main application
 
-Addresses: TASK-BE-003"
+Addresses: TASK-UI-003"
 
-# 5. Push and create PR
-git push origin feature/TASK-BE-003-saving-throws-model
-# Create PR on GitHub
+# 5. Push when complete and ready for review
+git push origin feature/TASK-UI-003-saving-throws-widget
+# Check in with team lead for review
 ```
 
 ---
@@ -220,35 +203,25 @@ pytest --cov=src --cov-report=html
 pytest -m "not slow"  # Skip slow integration tests
 ```
 
-### Writing Tests
-Every new feature needs tests. Follow this pattern:
-```python
-# tests/models/test_saving_throws.py
-import pytest
-from src.models.character.saving_throws import SavingThrows
-from src.models.character.base import AbilityType, AbilityScores
+### Testing for TASK-UI-003
+For your saving throws widget, focus on testing that:
+1. **The widget displays correctly** (all 6 saves shown)
+2. **Checkboxes work** (can be checked/unchecked)
+3. **Modifiers calculate correctly** (ability modifier + proficiency if checked)
 
-class TestSavingThrows:
-    def test_saving_throw_calculation(self):
-        """Test saving throw modifier calculation."""
-        saving_throws = SavingThrows()
-        saving_throws.proficiencies = [AbilityType.WISDOM]
-        
-        ability_scores = AbilityScores(wisdom=16)  # +3 modifier
-        proficiency_bonus = 2
-        
-        # Proficient save: ability modifier + proficiency
-        wisdom_save = saving_throws.get_saving_throw_modifier(
-            AbilityType.WISDOM, ability_scores, proficiency_bonus
-        )
-        assert wisdom_save == 5  # 3 + 2
-        
-        # Non-proficient save: ability modifier only
-        strength_save = saving_throws.get_saving_throw_modifier(
-            AbilityType.STRENGTH, ability_scores, proficiency_bonus
-        )
-        assert strength_save == 0  # 10 strength = +0 modifier
+**Note**: UI testing can be tricky with tkinter. For now, focus on manual testing:
+```bash
+# Run the app and verify:
+python main.py
+
+# Check that your widget:
+# - Shows all 6 saving throws
+# - Has working checkboxes
+# - Displays correct modifiers
+# - Updates when ability scores change
 ```
+
+**Advanced testing** (optional): You can add widget tests later following the pattern in existing test files.
 
 ---
 
@@ -271,8 +244,10 @@ class TestSavingThrows:
 - Examples: Athletics (STR), Stealth (DEX), Perception (WIS)
 - Modifier: ability modifier + (proficiency bonus if proficient)
 
-**Saving Throws**: One for each ability score
+**Saving Throws**: One for each ability score (STR, DEX, CON, INT, WIS, CHA)
+- Calculation: ability modifier + (proficiency bonus if proficient)
 - Most classes get proficiency in 2 saving throws
+- Examples: Fighters get STR and CON, Wizards get INT and WIS
 
 ### Reference Materials
 - **Official**: D&D 5e Player's Handbook
@@ -341,23 +316,24 @@ python -c "import tkinter; tkinter.Tk().mainloop()"
 
 ## 🎯 Your Next Steps
 
-### Day 1 (Today)
-1. ✅ Complete environment setup
-2. ✅ Run the application successfully  
-3. ✅ Read this onboarding guide
-4. 📋 Read `DEVELOPMENT_PLAN.md` and `WORKFLOW_AND_SETUP.md`
-5. 🎯 Choose your first task from the options above
+### Today (Setup & Research)
+1. ✅ Complete environment setup and test the app
+2. ✅ Read this onboarding guide  
+3. 📋 Read TASK-UI-003 details in `FRONTEND_TASKS.md`
+4. 🔍 Study the existing pattern in `src/ui/components/ability_scores.py`
+5. 🌿 Create your feature branch: `feature/TASK-UI-003-saving-throws-widget`
 
-### Day 2-3
-1. 📖 Read your team's specific task documentation
-2. 🧑‍💻 Start working on your chosen task
-3. 💬 Ask questions early and often
-4. 🧪 Write tests for your implementation
+### Day 1-2 (Implementation)
+1. 🧑‍💻 Implement the saving throws widget following the existing pattern
+2. 🧪 Test frequently by running `python main.py`
+3. 💬 Ask questions if you get stuck
+4. ✅ Verify all success criteria are met
 
-### End of Week 1
-1. 🔄 Complete your first task and create a PR
-2. 📊 Review other team members' work
-3. 🎉 Celebrate your first contribution!
+### Check-in Point
+1. 🔄 Complete TASK-UI-003 implementation
+2. 🚀 Push your feature branch
+3. 👥 **Check in with team lead for review**
+4. 🎉 Get approval before taking on additional tasks
 
 ---
 
@@ -389,4 +365,17 @@ You're joining a well-organized project with clear documentation and professiona
 
 ---
 
-**Ready to start? Pick a task and create your first feature branch!** 🚀
+**Ready to start? Begin with TASK-UI-003 and we'll see you at the check-in point!** 🚀
+
+## 📝 Quick Reference for TASK-UI-003
+
+**What to create**: `src/ui/components/saving_throws.py`
+**Pattern to follow**: `src/ui/components/ability_scores.py`
+**Integration point**: Add widget to `main.py` in the left sidebar
+**Branch name**: `feature/TASK-UI-003-saving-throws-widget`
+
+**Key requirements**:
+- Display all 6 saving throws (STR, DEX, CON, INT, WIS, CHA)
+- Add checkboxes for proficiency selection
+- Calculate modifiers: ability modifier + (proficiency bonus if checked)
+- Follow existing UI styling and layout patterns
